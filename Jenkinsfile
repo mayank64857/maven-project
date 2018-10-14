@@ -12,9 +12,9 @@ pipeline {
                 }
             }
         }
-        stage ('Deploy to Staging'){
+        stage ('Run docker container'){
             steps {
-                build job: 'deploy_to_staging'
+                sh 'docker build . -t tomcatwebapp:${env.BUILD_ID}'
             }
         }
     }
